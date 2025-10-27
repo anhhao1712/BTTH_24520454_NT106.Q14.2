@@ -1,0 +1,22 @@
+CREATE DATABASE QuanLyMonAn;
+GO
+
+USE QuanLyMonAn;
+GO
+
+CREATE TABLE NguoiDung (
+    IDNCC INT PRIMARY KEY IDENTITY(1,1),
+    TenNguoiCungCap NVARCHAR(200) NOT NULL,
+    QuyenHan NVARCHAR(100)
+);
+
+CREATE TABLE MonAn (
+    IDMA INT PRIMARY KEY IDENTITY(1,1),
+    TenMonAn NVARCHAR(200) NOT NULL,
+    HinhAnh NVARCHAR(500),
+    IDNCC INT,
+    CONSTRAINT FK_MonAn_NguoiDung FOREIGN KEY (IDNCC) REFERENCES NguoiDung(IDNCC)
+);
+
+
+select * from NguoiDung, MonAn;
